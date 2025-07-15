@@ -228,3 +228,278 @@ function descargarListado(tipo) {
   }
 }
 
+window.modificarParticipante = modificarParticipante;
+window.eliminarParticipante = eliminarParticipante;
+
+/* Inscripciones */ 
+    /*const cuerpo = document.getElementById("cuerpoInscripciones");
+
+    participantes = JSON.parse(localStorage.getItem("participantes")) || [];
+
+    function crearSelectParticipantes(nombreCampo) {
+      const select = document.createElement("select");
+      select.name = nombreCampo;
+      participantes.forEach(p => {
+        const option = document.createElement("option");
+        option.value = p[nombreCampo];
+        option.textContent = p[nombreCampo];
+        select.appendChild(option);
+      });
+      return select;
+    }
+
+    function agregarFila() {
+      const tr = document.createElement("tr");
+
+      const tdNombre = document.createElement("td");
+      tdNombre.appendChild(crearSelectParticipantes("nombre"));
+
+      const tdApellido = document.createElement("td");
+      tdApellido.appendChild(crearSelectParticipantes("apellido"));
+
+      const tdEstablecimiento = document.createElement("td");
+      const inputEst = document.createElement("input");
+      inputEst.type = "text";
+      tdEstablecimiento.appendChild(inputEst);
+
+      const tdPrueba = document.createElement("td");
+      const inputPrueba = document.createElement("input");
+      inputPrueba.type = "text";
+      tdPrueba.appendChild(inputPrueba);
+
+      const tdDebutante = document.createElement("td");
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      tdDebutante.style.textAlign = "center";
+      tdDebutante.appendChild(checkbox);
+
+      const tdAcciones = document.createElement("td");
+      const btnEliminar = document.createElement("button");
+      btnEliminar.textContent = "🗑️";
+      btnEliminar.onclick = () => tr.remove();
+      tdAcciones.appendChild(btnEliminar);
+
+      tr.append(tdNombre, tdApellido, tdEstablecimiento, tdPrueba, tdDebutante, tdAcciones);
+      cuerpo.appendChild(tr);
+    }
+
+    function descargarInscripciones() {
+      const filas = cuerpo.querySelectorAll("tr");
+      if (filas.length === 0) {
+        Swal.fire("Atención", "No hay inscripciones para descargar.", "info");
+        return;
+      }
+
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      let y = 10;
+      doc.setFontSize(12);
+
+      filas.forEach((fila, i) => {
+        const cells = fila.querySelectorAll("td");
+        const nombre = cells[0].querySelector("select").value;
+        const apellido = cells[1].querySelector("select").value;
+        const establecimiento = cells[2].querySelector("input").value;
+        const prueba = cells[3].querySelector("input").value;
+        const debutante = cells[4].querySelector("input").checked ? "Sí" : "No";
+
+        doc.text(`Nombre: ${nombre}`, 10, y);
+        doc.text(`Apellido: ${apellido}`, 10, y + 6);
+        doc.text(`Establecimiento: ${establecimiento}`, 10, y + 12);
+        doc.text(`Prueba: ${prueba}`, 10, y + 18);
+        doc.text(`Debutante: ${debutante}`, 10, y + 24);
+        y += 36;
+        if (y > 270) {
+          doc.addPage();
+          y = 10;
+        }
+      });
+
+      doc.save("inscripciones.pdf");
+    }
+
+    // Cargar al menos una fila al abrir la página
+    document.addEventListener("DOMContentLoaded", () => {
+      if (participantes.length === 0) {
+        Swal.fire("Sin participantes", "Agregá participantes antes de inscribir.", "warning");
+      } else {
+        agregarFila();
+      }
+    });*/
+ 
+  const cuerpo = document.getElementById("cuerpoInscripciones");
+    
+  participantes = JSON.parse(localStorage.getItem("participantes")) || [];
+
+  const establecimientosUnicos = [...new Set(participantes.map(p => p.establecimiento))];
+
+  function crearSelectNombre(onChangeCallback) {
+    const select = document.createElement("select");
+    select.name = "nombre";
+    select.style.width = "100%";
+
+    const nombresUnicos = [...new Set(participantes.map(p => p.nombre))];
+    nombresUnicos.forEach(nombre => {
+      const option = document.createElement("option");
+      option.value = nombre;
+      option.textContent = nombre;
+      select.appendChild(option);
+    });
+
+    if (onChangeCallback) {
+      select.addEventListener("change", onChangeCallback);
+    }
+
+    return select;
+  }
+
+  function crearSelectApellido(nombreSeleccionado) {
+    const select = document.createElement("select");
+    select.name = "apellido";
+    select.style.width = "100%";
+
+    const apellidos = participantes
+      .filter(p => p.nombre === nombreSeleccionado)
+      .map(p => p.apellido);
+
+    apellidos.forEach(apellido => {
+      const option = document.createElement("option");
+      option.value = apellido;
+      option.textContent = apellido;
+      select.appendChild(option);
+    });
+
+    return select;
+  }
+
+  function crearSelectEstablecimientos() {
+    const select = document.createElement("select");
+    select.style.width = "100%";
+
+    establecimientosUnicos.forEach(est => {
+      const option = document.createElement("option");
+      option.value = est;
+      option.textContent = est;
+      select.appendChild(option);
+    });
+
+    return select;
+  }
+
+  function crearSelectPruebas() {
+    const select = document.createElement("select");
+    select.style.width = "100%";
+
+    const categoriasPrueba = [
+      "-- Seleccionar prueba --",
+      "Manejo", "0.40 cm", "0.50 cm", "0.60 cm", "0.70 cm",
+      "0.80 cm", "0.90 cm", "1.00 mt", "1.10 mt", "1.20 mt", "1.30 mt"
+    ];
+
+    categoriasPrueba.forEach(cat => {
+      const option = document.createElement("option");
+      option.value = cat === "-- Seleccionar prueba --" ? "" : cat;
+      option.textContent = cat;
+      select.appendChild(option);
+    });
+
+    return select;
+  }
+
+  function agregarFila() {
+    const tr = document.createElement("tr");
+
+    // Nombre
+    const tdNombre = document.createElement("td");
+    const selectNombre = crearSelectNombre(actualizarApellido);
+    tdNombre.appendChild(selectNombre);
+
+    // Apellido
+    const tdApellido = document.createElement("td");
+    let selectApellido = crearSelectApellido(selectNombre.value);
+    tdApellido.appendChild(selectApellido);
+
+    // Establecimiento
+    const tdEstablecimiento = document.createElement("td");
+    const selectEst = crearSelectEstablecimientos();
+    tdEstablecimiento.appendChild(selectEst);
+
+    // Prueba
+    const tdPrueba = document.createElement("td");
+    const selectPrueba = crearSelectPruebas();
+    tdPrueba.appendChild(selectPrueba);
+
+    // Debutante
+    const tdDebutante = document.createElement("td");
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.style.transform = "scale(1.2)";
+    tdDebutante.style.textAlign = "center";
+    tdDebutante.appendChild(checkbox);
+
+    // Acciones
+    const tdAcciones = document.createElement("td");
+    const btnEliminar = document.createElement("button");
+    btnEliminar.textContent = "🗑️";
+    btnEliminar.onclick = () => tr.remove();
+    tdAcciones.appendChild(btnEliminar);
+
+    function actualizarApellido() {
+      const nuevoSelectApellido = crearSelectApellido(selectNombre.value);
+      tdApellido.innerHTML = "";
+      tdApellido.appendChild(nuevoSelectApellido);
+    }
+
+    tr.append(tdNombre, tdApellido, tdEstablecimiento, tdPrueba, tdDebutante, tdAcciones);
+    cuerpo.appendChild(tr);
+  }
+
+  function descargarInscripciones() {
+    const filas = cuerpo.querySelectorAll("tr");
+    if (filas.length === 0) {
+      Swal.fire("Atención", "No hay inscripciones para descargar.", "info");
+      return;
+    }
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    let y = 10;
+    doc.setFontSize(12);
+
+    for (let i = 0; i < filas.length; i++) {
+      const cells = filas[i].querySelectorAll("td");
+      const nombre = cells[0].querySelector("select")?.value;
+      const apellido = cells[1].querySelector("select")?.value;
+      const establecimiento = cells[2].querySelector("select")?.value;
+      const prueba = cells[3].querySelector("select")?.value;
+      const debutante = cells[4].querySelector("input").checked ? "Sí" : "No";
+
+      if (!nombre || !apellido || !establecimiento || !prueba) {
+        Swal.fire("Falta información", `Completá todos los campos en la fila ${i + 1}.`, "error");
+        return;
+      }
+
+      doc.text(`Nombre: ${nombre}`, 10, y);
+      doc.text(`Apellido: ${apellido}`, 10, y + 6);
+      doc.text(`Establecimiento: ${establecimiento}`, 10, y + 12);
+      doc.text(`Prueba: ${prueba}`, 10, y + 18);
+      doc.text(`Debutante: ${debutante}`, 10, y + 24);
+      y += 36;
+
+      if (y > 270) {
+        doc.addPage();
+        y = 10;
+      }
+    }
+
+    doc.save("inscripciones.pdf");
+  }
+
+  // Al cargar la página
+  document.addEventListener("DOMContentLoaded", () => {
+    if (participantes.length === 0) {
+      Swal.fire("Sin participantes", "Agregá participantes antes de inscribir.", "warning");
+    } else {
+      agregarFila();
+    }
+  });
