@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Participantes</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="shortcut icon" href="../Imagenes/Logo Hipismo CAE.jpg" type="image/x-icon" />
+
+</head>
+
+<body>
+  <header class="header">
+    <nav class="navbar">
+      <div class="nav-left">
+        <a href="#" class="icon" id="btnMenu">
+          <img src="../Imagenes/menu.png" alt="Menú" loading="lazy" />
+        </a>
+      </div>
+      <div class="nav-right">
+        <a href="#" class="icon">
+          <img src="../Imagenes/buscar.png" alt="Buscar" loading="lazy" />
+        </a>
+        <a href="#" class="icon">
+          <img src="../Imagenes/notif.png" alt="Notificaciones" loading="lazy" />
+        </a>
+      </div>
+    </nav>
+
+    <div class="menu-desplegable" id="menuDesplegable">
+      <a href="../Páginas/Participantes.html">Participantes</a>
+      <a href="../Páginas/Inscripciones.html">Inscripciones</a>
+      <!-- <a href="../Páginas/Colaboradores.html">Colaboradores</a> -->
+    </div>
+  </header>
+
+<section id="listadoParticipantes">
+      <table id="tablaParticipantes">
+        <thead id="encabezadoParticipantes">
+          <!-- encabezado generado desde JS -->
+        </thead>
+        <tbody id="participantesLista">
+          <!-- Filas generadas dinámicamente -->
+        </tbody>
+      </table>
+
+    <div class="contenedorBotones">
+        <button class="btnAceptar" onclick="window.location.href='../Páginas/Participantes.html'">VOLVER</button>
+    </div>
+
+      <div class="contenedorBotones">
+        <button class="btnAceptar" onclick="descargarListado('pdf')">DESCARGAR PDF</button>
+      </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2025 Hipismo CAE. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="../index.js"></script>
+
+</body>
+
+</html>

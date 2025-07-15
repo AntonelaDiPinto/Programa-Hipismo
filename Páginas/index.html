@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hipismo CAE</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="shortcut icon" href="../Imagenes/Logo Hipismo CAE.jpg" type="image/x-icon" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-left">
+                <a href="#" class="icon" id="btnMenu">
+                    <img src="../Imagenes/menu.png" alt="Menú" loading="lazy" />
+                </a>
+            </div>
+            <div class="nav-right">
+                <a href="#" class="icon">
+                    <img src="../Imagenes/buscar.png" alt="Buscar" loading="lazy" />
+                </a>
+                <a href="#" class="icon">
+                    <img src="../Imagenes/notif.png" alt="Notificaciones" loading="lazy" />
+                </a>
+            </div>
+        </nav>
+
+        <div class="menu-desplegable" id="menuDesplegable">
+            <a href="../Páginas/Participantes.html">Participantes</a>
+            <a href="../Páginas/Inscripciones.html">Inscripciones</a>
+           <!-- <a href="../Páginas/Colaboradores.html">Colaboradores</a> -->
+        </div>
+    </header>
+
+    <main class="mainPrincipal">
+        <div class="contenedor-logos">
+            <button class="flecha-carrusel" id="btnAtras" onclick="moverCarrusel(-1)">
+                <img src="../Imagenes/icono_flecha_atras.png" alt="Anterior" />
+            </button>
+    
+            <div class="carrusel-logos" id="carruselLogos"></div>
+    
+            <button class="flecha-carrusel" id="btnAdelante" onclick="moverCarrusel(1)">
+                <img src="../Imagenes/icono_flecha_adelante.png" alt="Siguiente" />
+            </button>
+        </div>
+
+        <div class="flyer-container">
+            <img src="../Imagenes/flyer.jpg" alt="Flyer" class="flyer-img" loading="lazy" />
+        </div>
+
+        <div class="botones-principales">
+            <button class="btnAceptar" onclick="location.href='../Páginas/Participantes.html'">Participantes</button>
+            <button class="btnAceptar" onclick="location.href='../Páginas/Inscripciones.html'">Inscripciones</button>
+           <!-- <button class="btnAceptar" onclick="location.href='../Páginas/Colaboradores.html'">¿Quiénes nos
+                apoyan?</button> -->
+        </div>
+
+        <section class="descarga-anteprograma">
+            <a href="../Documentos/Anteprograma.pdf" download>
+                <img src="../Imagenes/anteprograma_preview.png" alt="Vista previa del Anteprograma" class="img-preview">
+            </a>
+            <a href="../Documentos/Anteprograma.pdf" download class="btnDescarga">
+                Descargar Anteprograma
+            </a>
+        </section>
+      
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2025 Hipismo CAE. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../index.js"></script>
+</body>
+
+</html>

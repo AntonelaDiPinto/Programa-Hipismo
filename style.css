@@ -1,0 +1,420 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+main {
+  flex: 1;
+}
+
+/* Fuentes */ 
+/* Poppins */
+@font-face {
+  font-family: "Poppins";
+  src: url("../assets/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../assets/fonts/Poppins/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Roboto */
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/fonts/Roboto/Roboto-Italic-VariableFont_wdth,wght.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/fonts/Roboto/Roboto-VariableFont_wdth,wght.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Configuro la fuente para todo el sitio */
+* {
+  font-family: "Poppins", "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Variables */
+
+:root {
+  --color-fondo: #f2f2f2;
+  --color-primario: #888686; /* rosado principal */
+  --color-secundario: #bfbfbf; /* gris medio */
+  --color-terciario: #1a1a1a; /* casi negro */
+  --color-cuarto: #efa4ce; /* rosado fuerte */
+  --color-contraste: #ffffff; /* blanco */
+}
+
+/* Reset básico */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-terciario);
+  padding-top: 70px;
+}
+
+/* Header */
+
+.navbar {
+  display: flex;
+  height: 55px;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-primario);
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.icon img {
+  height: 18px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px; 
+}
+
+/* Menú desplegable */
+
+.menu-desplegable {
+  position: fixed;
+  top: 58px;
+  left: 0;
+  width: 250px;
+  background-color: var(--color-primario);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transform: translateY(-20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  border-radius: 0 0 10px 10px;
+}
+
+.menu-desplegable a {
+  color: var(--color-contraste);
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.menu-desplegable.mostrar {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Carrusel */
+
+.contenedor-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+  gap: 25px;
+}
+
+.carrusel-logos {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+.logo-card {
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.logo-card img {
+  width: 100px;
+}
+
+.logo-card.seleccionada {
+  transform: scale(1.1);
+}
+
+.flecha-carrusel {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Texto debajo de los logos del carrusel */
+
+.logo-card p {
+  font-size: 0.6rem;
+  font-weight: 200;
+  color: var(--color-primario); /* rosado */
+  text-align: center;
+  margin-top: 8px;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  .logo-card img {
+    max-width: 70px;
+  }
+}
+
+/* Flyer */
+
+.flyer-container {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.flyer-img {
+  max-width: 20%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Botones principales */
+
+.botones-principales {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.btnAceptar {
+  background-color: var(--color-terciario);
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btnAceptar:hover {
+  background-color: var(--color-primario);
+}
+
+/* Anteprograma */
+
+.descarga-anteprograma {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: var(--color-fondo);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  max-width: 600px;
+  text-align: center;
+}
+
+.img-preview {
+  width: 160px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  margin-bottom: 15px;
+  transition: transform 0.2s ease;
+}
+
+.img-preview:hover {
+  transform: scale(1.08);
+  cursor: pointer;
+}
+
+.btnDescarga {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--color-terciario);
+  color: var(--color-contraste);
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: background-color 0.3s ease;
+}
+
+.btnDescarga:hover {
+  background-color: var(--color-cuarto);
+}
+
+/* Participantes */
+
+/* FORMULARIO PARTICIPANTES */
+
+.seccionParticipantes {
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formParticipantes {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  font-size: 1.3rem;
+  padding: 0 5%;
+}
+
+.formParticipantes div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1%;
+}
+
+.formParticipantes label {
+  font-weight: bold;
+}
+
+.inputParticipantes {
+  background: var(--color-contraste);
+  width: 100%;
+  padding: 2%;
+  margin-top: 10px;
+  border-radius: 6px;
+  border-style: none;
+  font-size: 1.3rem;
+  justify-content: flex-start;
+}
+
+.inputParticipantes::placeholder {
+  color:rgb(199, 195, 195) ;
+}
+
+.inputParticipantes:focus::placeholder {
+  color: transparent;
+}
+
+.mensaje-error {
+  color: red;
+  font-size: 1.1rem;
+}
+
+.advertencia {
+  padding-left: 4%;
+  font-size: 0.9rem;
+}
+
+/* TABLA PARTICIPANTES */
+
+#tablaParticipantes {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px auto;
+}
+
+#tablaParticipantes th,
+#tablaParticipantes td {
+  border: 1px solid var(--color-fondo);
+  padding: 12px;
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+  max-width: 200px;
+}
+
+#tablaParticipantes th {
+  background-color: var(--color-primario);
+  color: var(--color-contraste);
+  text-align: center;
+}
+
+#tablaParticipantes tr:nth-child(even) {
+  background-color: var(--color-secundario);
+}
+
+/* BOTONES */
+
+.contenedorBotones {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.btnAceptar {
+    background-color: var(--color-cuarto);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .btnAceptar:hover {
+    background-color: var(--color-secundario);
+  }
+
+  .btnCancelar {
+    background-color: var(--color-primario);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .btnCancelar:hover {
+    background-color: var(--color-secundario);
+  }
+
+/* Footer */
+
+.footer {
+  background-color: var(--color-primario);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+}
