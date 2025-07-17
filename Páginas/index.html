@@ -35,40 +35,67 @@
         </div>
     </header>
 
-    <main class="mainPrincipal">
-        <div class="contenedor-logos">
-            <button class="flecha-carrusel" id="btnAtras" onclick="moverCarrusel(-1)">
-                <img src="../Imagenes/icono_flecha_atras.png" alt="Anterior" />
-            </button>
-    
-            <div class="carrusel-logos" id="carruselLogos"></div>
-    
-            <button class="flecha-carrusel" id="btnAdelante" onclick="moverCarrusel(1)">
-                <img src="../Imagenes/icono_flecha_adelante.png" alt="Siguiente" />
-            </button>
-        </div>
-
-        <div class="flyer-container">
-            <img src="../Imagenes/flyer.jpg" alt="Flyer" class="flyer-img" loading="lazy" />
-        </div>
-
-        <div class="botones-principales">
-            <button class="btnAceptar" onclick="location.href='../Páginas/Participantes.html'">Participantes</button>
-            <button class="btnAceptar" onclick="location.href='../Páginas/Inscripciones.html'">Inscripciones</button>
-           <!-- <button class="btnAceptar" onclick="location.href='../Páginas/Colaboradores.html'">¿Quiénes nos
-                apoyan?</button> -->
-        </div>
-
-        <section class="descarga-anteprograma">
-            <a href="../Documentos/Anteprograma.pdf" download>
-                <img src="../Imagenes/anteprograma_preview.png" alt="Vista previa del Anteprograma" class="img-preview">
+    <div class="layout-contenido">
+        <!-- Sponsors Izquierda -->
+        <div class="sponsors-columna">
+            <a href="https://www.instagram.com/donraulalmacen/?hl=es" target="_blank">
+                <img src="../Imagenes/Sponsor1.jpeg" alt="Don Raul" />
             </a>
-            <a href="../Documentos/Anteprograma.pdf" download class="btnDescarga">
-                Descargar Anteprograma
+            <a href="https://finoteix.com.ar/" target="_blank">
+                <img src="../Imagenes/Sponsor2.png" alt="Finoteix" />
             </a>
-        </section>
-      
-    </main>
+        </div>
+
+        <main class="mainPrincipal">
+            <div class="contenedor-logos-fijos">
+                <div class="logo-fijo">
+                    <img src="../Imagenes/Logo Club Estudiantes Olavarría.png" alt="Club Estudiantes" />
+                    <p>Club Atlético Estudiantes</p>
+                </div>
+                <div class="logo-fijo">
+                    <img src="../Imagenes/Logo Hipismo CAE.jpg" alt="Hipismo CAE" />
+                    <p>Hipismo - C.A.E. Olavarría</p>
+                </div>
+            </div>
+
+            <!-- Carrusel de flyers -->
+            <div class="flyer-carrusel">
+                <button class="flecha-carrusel" id="btnFlyerAtras">‹</button>
+                <div class="flyer-wrapper" id="flyerWrapper">
+                    <!-- Las imágenes se cargan con JS -->
+                </div>
+                <button class="flecha-carrusel" id="btnFlyerAdelante">›</button>
+            </div>
+
+            <div class="botones-principales">
+                <button class="btnAceptar"
+                    onclick="location.href='../Páginas/Participantes.html'">Participantes</button>
+                <button class="btnAceptar"
+                    onclick="location.href='../Páginas/Inscripciones.html'">Inscripciones</button>
+            </div>
+
+            <section class="descarga-anteprograma">
+                <a href="../Documentos/Anteprograma.pdf" download>
+                    <img src="../Imagenes/anteprograma_preview.png" alt="Vista previa del Anteprograma"
+                        class="img-preview">
+                </a>
+                <a href="../Documentos/Anteprograma.pdf" download class="btnDescarga">
+                    Descargar Anteprograma
+                </a>
+            </section>
+
+        </main>
+
+        <!-- Sponsors Derecha -->
+        <div class="sponsors-columna">
+            <a href="https://www.instagram.com/pintureriasdelcentro/" target="_blank">
+                <img src="../Imagenes/Sponsor3.jpeg" alt="Del Centro Pinturerías" />
+            </a>
+            <a href="https://www.elquebracho.com.ar/" target="_blank">
+                <img src="../Imagenes/Sponsor4.png" alt="El Quebracho" />
+            </a>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="footer-content">

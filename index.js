@@ -13,57 +13,52 @@ document.addEventListener("DOMContentLoaded", () => {
   cargarCarrusel();
 });
 
-// Carrusel de Logos 
-const logosCarrusel = [
-  {
-    nombre: "Club Atlético Estudiantes",
-    imagen: "../Imagenes/Logo Club Estudiantes Olavarría.png"
-  },
-  {
-    nombre: "Hipismo - C.A.E. Olavarría",
-    imagen: "../Imagenes/Logo Hipismo CAE.jpg"
-  }
+// Carrusel de Flyers
+const flyers = [
+  "../Imagenes/flyer.jpg",
+  "../Imagenes/flyer2.jpg",
 ];
 
-let indiceInicio = 0;
-let logoSeleccionado = "";
+let flyerActual = 0;
 
-function cargarCarrusel() {
-  const carrusel = document.getElementById("carruselLogos");
-  const btnAtras = document.getElementById("btnAtras");
-  const btnAdelante = document.getElementById("btnAdelante");
+function mostrarFlyer() {
+  const wrapper = document.getElementById("flyerWrapper");
+  wrapper.innerHTML = "";
 
-  carrusel.innerHTML = "";
+  const img = document.createElement("img");
+  img.src = flyers[flyerActual];
+  img.alt = `Flyer ${flyerActual + 1}`;
+  img.classList.add("activo");
 
-  const visibles = [];
-  for (let i = 0; i < Math.min(3, logosCarrusel.length); i++) {
-    const index = (indiceInicio + i) % logosCarrusel.length;
-    visibles.push(logosCarrusel[index]);
-  }
-
-  visibles.forEach((logo, index) => {
-    const div = document.createElement("div");
-    div.className = "logo-card";
-    if (index === 1) div.classList.add("seleccionada");
-
-    div.innerHTML = `
-      <img src="${logo.imagen}" alt="${logo.nombre}" />
-      <p class="logo-nombre">${logo.nombre}</p>
-    `;
-    carrusel.appendChild(div);
-  });
-
-  if (visibles[1]) logoSeleccionado = visibles[1].nombre;
-
-  const hayMasDeUno = logosCarrusel.length > 1;
-  btnAtras.style.display = hayMasDeUno ? "block" : "none";
-  btnAdelante.style.display = hayMasDeUno ? "block" : "none";
+  wrapper.appendChild(img);
 }
 
-window.moverCarrusel = function (direccion) {
-  indiceInicio = (indiceInicio + direccion + logosCarrusel.length) % logosCarrusel.length;
-  cargarCarrusel();
-};
+document.addEventListener("DOMContentLoaded", () => {
+  mostrarFlyer();
+
+  const btnAtras = document.getElementById("btnFlyerAtras");
+  const btnAdelante = document.getElementById("btnFlyerAdelante");
+
+  if (flyers.length <= 1) {
+    btnAtras.style.display = "none";
+    btnAdelante.style.display = "none";
+  } else {
+    btnAtras.addEventListener("click", () => {
+      flyerActual = (flyerActual - 1 + flyers.length) % flyers.length;
+      mostrarFlyer();
+    });
+
+    btnAdelante.addEventListener("click", () => {
+      flyerActual = (flyerActual + 1) % flyers.length;
+      mostrarFlyer();
+    });
+
+    setInterval(() => {
+      flyerActual = (flyerActual + 1) % flyers.length;
+      mostrarFlyer();
+    }, 5000);
+  }
+});
 
 /* Participantes */
 
@@ -231,102 +226,6 @@ function descargarListado(tipo) {
 window.modificarParticipante = modificarParticipante;
 window.eliminarParticipante = eliminarParticipante;
 
-/* Inscripciones */ 
-    /*const cuerpo = document.getElementById("cuerpoInscripciones");
-
-    participantes = JSON.parse(localStorage.getItem("participantes")) || [];
-
-    function crearSelectParticipantes(nombreCampo) {
-      const select = document.createElement("select");
-      select.name = nombreCampo;
-      participantes.forEach(p => {
-        const option = document.createElement("option");
-        option.value = p[nombreCampo];
-        option.textContent = p[nombreCampo];
-        select.appendChild(option);
-      });
-      return select;
-    }
-
-    function agregarFila() {
-      const tr = document.createElement("tr");
-
-      const tdNombre = document.createElement("td");
-      tdNombre.appendChild(crearSelectParticipantes("nombre"));
-
-      const tdApellido = document.createElement("td");
-      tdApellido.appendChild(crearSelectParticipantes("apellido"));
-
-      const tdEstablecimiento = document.createElement("td");
-      const inputEst = document.createElement("input");
-      inputEst.type = "text";
-      tdEstablecimiento.appendChild(inputEst);
-
-      const tdPrueba = document.createElement("td");
-      const inputPrueba = document.createElement("input");
-      inputPrueba.type = "text";
-      tdPrueba.appendChild(inputPrueba);
-
-      const tdDebutante = document.createElement("td");
-      const checkbox = document.createElement("input");
-      checkbox.type = "checkbox";
-      tdDebutante.style.textAlign = "center";
-      tdDebutante.appendChild(checkbox);
-
-      const tdAcciones = document.createElement("td");
-      const btnEliminar = document.createElement("button");
-      btnEliminar.textContent = "🗑️";
-      btnEliminar.onclick = () => tr.remove();
-      tdAcciones.appendChild(btnEliminar);
-
-      tr.append(tdNombre, tdApellido, tdEstablecimiento, tdPrueba, tdDebutante, tdAcciones);
-      cuerpo.appendChild(tr);
-    }
-
-    function descargarInscripciones() {
-      const filas = cuerpo.querySelectorAll("tr");
-      if (filas.length === 0) {
-        Swal.fire("Atención", "No hay inscripciones para descargar.", "info");
-        return;
-      }
-
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
-      let y = 10;
-      doc.setFontSize(12);
-
-      filas.forEach((fila, i) => {
-        const cells = fila.querySelectorAll("td");
-        const nombre = cells[0].querySelector("select").value;
-        const apellido = cells[1].querySelector("select").value;
-        const establecimiento = cells[2].querySelector("input").value;
-        const prueba = cells[3].querySelector("input").value;
-        const debutante = cells[4].querySelector("input").checked ? "Sí" : "No";
-
-        doc.text(`Nombre: ${nombre}`, 10, y);
-        doc.text(`Apellido: ${apellido}`, 10, y + 6);
-        doc.text(`Establecimiento: ${establecimiento}`, 10, y + 12);
-        doc.text(`Prueba: ${prueba}`, 10, y + 18);
-        doc.text(`Debutante: ${debutante}`, 10, y + 24);
-        y += 36;
-        if (y > 270) {
-          doc.addPage();
-          y = 10;
-        }
-      });
-
-      doc.save("inscripciones.pdf");
-    }
-
-    // Cargar al menos una fila al abrir la página
-    document.addEventListener("DOMContentLoaded", () => {
-      if (participantes.length === 0) {
-        Swal.fire("Sin participantes", "Agregá participantes antes de inscribir.", "warning");
-      } else {
-        agregarFila();
-      }
-    });*/
- 
   const cuerpo = document.getElementById("cuerpoInscripciones");
     
   participantes = JSON.parse(localStorage.getItem("participantes")) || [];
