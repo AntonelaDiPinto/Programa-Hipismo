@@ -140,7 +140,7 @@ function limpiarFormulario() {
 function modificarParticipante(index) {
   const p = participantes[index];
   Swal.fire({
-    title: "Modificar participante",
+    title: "Modificar Participante",
     html:
       `<input id="swal-nombre" class="swal2-input" placeholder="Nombre" value="${p.nombre}">` +
       `<input id="swal-apellido" class="swal2-input" placeholder="Apellido" value="${p.apellido}">` +

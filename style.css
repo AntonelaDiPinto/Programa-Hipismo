@@ -147,8 +147,6 @@ body {
 .contenedor-logos-fijos {
   display: flex;
   justify-content: space-between;
-  gap: 80px;
-  margin: 30px 0;
 }
 
 .logo-fijo {
@@ -226,7 +224,6 @@ body {
   flex-direction: column;
   gap: 100px;
   align-items: center;
-
 }
 
 .sponsors-columna img {
@@ -279,8 +276,9 @@ body {
   margin: 40px auto;
   padding: 20px;
   background-color: var(--color-fondo);
+  color: var(--color-contraste);
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   max-width: 600px;
   text-align: center;
 }
@@ -302,18 +300,17 @@ body {
 .btnDescarga {
   display: inline-block;
   padding: 10px 20px;
-  background-color: var(--color-terciario);
+  background-color: var(--color-cuarto);
   color: var(--color-contraste);
-  font-weight: bold;
   border: none;
   border-radius: 8px;
   text-decoration: none;
-  font-size: 0.8rem;
+  font-size: 1rem;
   transition: background-color 0.3s ease;
 }
 
 .btnDescarga:hover {
-  background-color: var(--color-cuarto);
+  background-color: var(--color-primario);
 }
 
 /* Participantes */
