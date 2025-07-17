@@ -60,7 +60,7 @@ main {
   --color-primario: #888686; /* rosado principal */
   --color-secundario: #bfbfbf; /* gris medio */
   --color-terciario: #1a1a1a; /* casi negro */
-  --color-cuarto: #efa4ce; /* rosado fuerte */
+  --color-cuarto: #415d6a; /* rosado fuerte */
   --color-contraste: #ffffff; /* blanco */
 }
 
@@ -146,7 +146,8 @@ body {
 
 .contenedor-logos-fijos {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 100px;
 }
 
 .logo-fijo {
@@ -224,6 +225,7 @@ body {
   flex-direction: column;
   gap: 100px;
   align-items: center;
+  margin: 0 30px; /* Mayor margen lateral */
 }
 
 .sponsors-columna img {
@@ -320,6 +322,7 @@ body {
 .tituloConFlecha {    
   width: 100%;
   padding: 0% 3%;
+  margin-top: 80px;
   display: flex;
   color: var(--color-terciario);
   font-weight: 600;
@@ -331,14 +334,15 @@ body {
 
 .tituloConFlechaPart { /*Debería poder cambiar solo el padding del titulo con flecha de la página Participantes y no repetir todo el código*/
   width: 100%;
-  padding: 2% 3%;
+  padding: 0% 3%;
+  margin-top: 20px;
   display: flex;
   color: var(--color-terciario);
   font-weight: 600;
   letter-spacing: 0.2rem;
   align-items: center;
   justify-content:center; 
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 .seccionParticipantes {
@@ -475,17 +479,6 @@ body {
   gap: 10px;
 }
 
-.tituloConFlechaIns {
-  width: 100%;
-  padding: 1% 2%;
-  font-weight: 600;
-  letter-spacing: 0.2rem;
-  align-items: center;
-  justify-content:center; 
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-}
-
 /* Tabla de inscripciones */
 
 #tablaInscripciones {
@@ -495,7 +488,8 @@ body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   border-radius: 8px;
   overflow: hidden;
-  margin-bottom: 10px;
+  padding: 12px;
+  margin: 5px auto;
 }
 
 #tablaInscripciones th,
