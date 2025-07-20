@@ -15,8 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Carrusel de Flyers
 const flyers = [
-  "./Imagenes/flyer.jpg",
-  "./Imagenes/flyer2.jpg",
+  "Imagenes/flyer.jpg",
+  "Imagenes/flyer2.jpg",
 ];
 
 let flyerActual = 0;
@@ -395,10 +395,20 @@ window.eliminarParticipante = eliminarParticipante;
   }
 
   // Al cargar la página
-  document.addEventListener("DOMContentLoaded", () => {
+ /* document.addEventListener("DOMContentLoaded", () => {
     if (participantes.length === 0) {
       Swal.fire("Sin participantes", "Agregá participantes antes de inscribir.", "warning");
     } else {
       agregarFila();
     }
-  });
+  });*/
+
+  document.addEventListener("DOMContentLoaded", () => {
+  if (window.location.pathname.includes("Inscripciones.html")) {
+    if (participantes.length === 0) {
+      Swal.fire("Sin participantes", "Agregá participantes antes de inscribir.", "warning");
+    } else {
+      agregarFila();
+    }
+  }
+});
