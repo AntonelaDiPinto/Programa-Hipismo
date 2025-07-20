@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="es">
 
@@ -96,3 +97,103 @@
   <script src="index.js"></script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hipismo CAE</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="shortcut icon" href="Imagenes/Logo Hipismo CAE.jpg" type="image/x-icon" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="navbar">
+      <div class="nav-left">
+        <a href="#" class="icon" id="btnMenu">
+          <img src="Imagenes/menu.png" alt="Menú" />
+        </a>
+      </div>
+      <div class="nav-right">
+        <a href="#" class="icon">
+          <img src="Imagenes/buscar.png" alt="Buscar" />
+        </a>
+        <a href="#" class="icon">
+          <img src="Imagenes/notif.png" alt="Notificaciones" />
+        </a>
+      </div>
+    </nav>
+
+    <div class="menu-desplegable" id="menuDesplegable">
+      <a href="Páginas/index.html">Inicio</a>
+      <a href="Páginas/Participantes.html">Participantes</a>
+      <a href="Páginas/Inscripciones.html">Inscripciones</a>
+    </div>
+  </header>
+
+  <div class="layout-contenido">
+     <!-- Sponsors Izquierda -->
+    <div class="sponsors-columna">
+      <a href="https://www.instagram.com/donraulalmacen/" target="_blank">
+        <img src="Imagenes/Sponsor1.jpeg" alt="Don Raul" />
+      </a>
+      <a href="https://finoteix.com.ar/" target="_blank">
+        <img src="Imagenes/Sponsor2.png" alt="Finoteix" />
+      </a>
+    </div>
+
+    <main class="mainPrincipal">
+      <div class="contenedor-logos-fijos">
+        <div class="logo-fijo">
+          <img src="Imagenes/Logo Club Estudiantes Olavarría.png" alt="Club Estudiantes" />
+          <p>Club Atlético Estudiantes</p>
+        </div>
+        <div class="logo-fijo">
+          <img src="Imagenes/Logo Hipismo CAE.jpg" alt="Hipismo CAE" />
+          <p>Hipismo - C.A.E. Olavarría</p>
+        </div>
+      </div>
+     
+      <!-- Carrusel de flyers -->
+      <div class="flyer-carrusel">
+        <button class="flecha-carrusel" id="btnFlyerAtras">‹</button>
+        <div class="flyer-wrapper" id="flyerWrapper"></div>
+        <button class="flecha-carrusel" id="btnFlyerAdelante">›</button>
+      </div>
+
+      <div class="botones-principales">
+        <button class="btnAceptar" onclick="location.href='Páginas/Participantes.html'">Participantes</button>
+        <button class="btnAceptar" onclick="location.href='Páginas/Inscripciones.html'">Inscripciones</button>
+      </div>
+
+      <section class="descarga-anteprograma">
+        <a href="Documentos/Anteprograma.pdf" download>
+          <img src="Imagenes/anteprograma_preview.png" alt="Anteprograma" class="img-preview" />
+        </a>
+        <a href="Documentos/Anteprograma.pdf" download class="btnDescarga">Descargar Anteprograma</a>
+      </section>
+    </main>
+
+    <!-- Sponsors Derecha -->
+    <div class="sponsors-columna">
+      <a href="https://www.instagram.com/pintureriasdelcentro/" target="_blank">
+        <img src="Imagenes/Sponsor3.jpeg" alt="Del Centro" />
+      </a>
+      <a href="https://www.elquebracho.com.ar/" target="_blank">
+        <img src="Imagenes/Sponsor4.png" alt="El Quebracho" />
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>© 2025 Hipismo CAE. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="index.js"></script>
+</body>
+</html>
+>>>>>>> e12f7ffe460f6839581321ec1855e14002c05a43
