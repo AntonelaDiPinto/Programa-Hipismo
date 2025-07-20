@@ -56,12 +56,12 @@ main {
 /* Variables */
 
 :root {
-  --color-fondo: #f2f2f2;
-  --color-primario: #888686; /* rosado principal */
-  --color-secundario: #bfbfbf; /* gris medio */
-  --color-terciario: #1a1a1a; /* casi negro */
-  --color-cuarto: #415d6a; /* rosado fuerte */
-  --color-contraste: #ffffff; /* blanco */
+  --color-fondo: rgb(242, 242, 242);
+  --color-primario: rgb(136, 134, 134);
+  --color-secundario: rgb(191, 191, 191); 
+  --color-terciario: rgb(26, 26, 26);
+  --color-cuarto: rgb(65, 93, 106);
+  --color-contraste: rgb(255, 255, 255); 
 }
 
 /* Reset básico */
@@ -160,7 +160,7 @@ body {
   object-fit: contain;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   padding: 10px;
 }
 
@@ -393,7 +393,7 @@ body {
 }
 
 .mensaje-error {
-  color: red;
+  color: rgb(211, 47, 47);
   font-size: 1.1rem;
 }
 
@@ -441,7 +441,7 @@ body {
 
 .btnAceptar {
     background-color: var(--color-cuarto);
-    color: white;
+    color: rgb(255, 255, 255);
     border: none;
     padding: 10px 20px;
     font-size: 1rem;
@@ -455,7 +455,7 @@ body {
 
   .btnCancelar {
     background-color: var(--color-primario);
-    color: white;
+    color: rgb(255, 255, 255);
     border: none;
     padding: 10px 20px;
     font-size: 1rem;
@@ -484,7 +484,7 @@ body {
 #tablaInscripciones {
   width: 100%;
   border-collapse: collapse;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   border-radius: 8px;
   overflow: hidden;
@@ -515,7 +515,7 @@ body {
   width: 100%;
   padding: 4px 6px;
   font-size: 0.85rem;
-  border: 1px solid #ccc;
+  border: 1px solid rgb(204, 204, 204);
   border-radius: 5px;
   background-color: var(--color-contraste);
 }
@@ -537,7 +537,7 @@ body {
 
 .btnAceptar {
   background-color: var(--color-cuarto);
-  color: white;
+  color: rgb(255, 255, 255);
   border: none;
   padding: 8px 16px;
   font-size: 0.9rem;
@@ -561,11 +561,76 @@ body {
   opacity: 0.7;
 }
 
+/* Sweet Alert Estilo general */
+.swal2-popup {
+  font-family: 'Poppins', sans-serif;
+  border-radius: 1.2rem;
+  padding: 2rem;
+  background-color: rgb(243, 243, 243); 
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
+.swal2-title {
+  color:rgb(65, 93, 106);
+  font-size: 1.5rem;
+}
+
+/* Texto del contenido */
+.swal2-html-container {
+  color: rgb(68, 68, 68);
+  font-size: 1rem;
+}
+
+/* Botón de confirmación */
+.swal2-confirm {
+  background-color: rgb(65, 93, 106) !important; 
+  color: rgb(255, 255, 255) !important;
+  border: none !important;
+  border-radius: 0.6rem !important;
+  padding: 0.6rem 1.5rem !important;
+  font-size: 1rem !important;
+}
+
+/* Botón de cancelación */
+.swal2-cancel {
+  background-color: rgb(158, 158, 158) !important; 
+  color: rgb(255, 255, 255) !important;
+  border: none !important;
+  border-radius: 0.6rem !important;
+  padding: 0.6rem 1.5rem !important;
+  font-size: 1rem !important;
+}
+
+/* Éxito */
+.swal2-icon-success {
+  border-color:rgb(65, 93, 106) !important;
+  color: rgb(65, 93, 106) !important;
+}
+
+/* Advertencia */
+.swal2-icon-warning {
+  border-color: rgb(251, 192, 45) !important;
+  color: rgb(251, 192, 45) !important; /* amarillo grisáceo */
+}
+
+/* Error */
+.swal2-icon-error {
+  border-color: rgb(211, 47, 47) !important;
+  color: rgb(211, 47, 47) !important; 
+}
+
+/* Info */
+.swal2-icon-info {
+  border-color: rgb(96, 125, 139) !important;
+  color: #607d8b !important; 
+}
+
 /* Footer */
 
 .footer {
   background-color: var(--color-primario);
-  color: white;
+  color: rgb(255, 255, 255);
   padding: 20px;
   text-align: center;
   width: 100%;

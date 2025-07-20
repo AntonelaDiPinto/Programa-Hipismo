@@ -1,3 +1,14 @@
+//Estilo de los Sweet Alert
+
+Swal.mixin({
+  customClass: {
+    popup: 'mi-alerta',
+    confirmButton: 'mi-boton-confirmar',
+    cancelButton: 'mi-boton-cancelar'
+  },
+  buttonsStyling: false
+});
+
 // Mostrar/Ocultar Menú Hamburguesa
 document.addEventListener("DOMContentLoaded", () => {
   const btnMenu = document.getElementById("btnMenu");
@@ -394,14 +405,7 @@ window.eliminarParticipante = eliminarParticipante;
     doc.save("inscripciones.pdf");
   }
 
-  // Al cargar la página
- /* document.addEventListener("DOMContentLoaded", () => {
-    if (participantes.length === 0) {
-      Swal.fire("Sin participantes", "Agregá participantes antes de inscribir.", "warning");
-    } else {
-      agregarFila();
-    }
-  });*/
+  //Al cargar la página
 
   document.addEventListener("DOMContentLoaded", () => {
   if (window.location.pathname.includes("Inscripciones.html")) {
