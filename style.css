@@ -225,7 +225,7 @@ body {
   flex-direction: column;
   gap: 100px;
   align-items: center;
-  margin: 0 30px; /* Mayor margen lateral */
+  margin: 0 30px; 
 }
 
 .sponsors-columna img {
@@ -240,6 +240,12 @@ body {
 .sponsors-columna img:hover {
   transform: scale(1.05);
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .sponsors-columna {
+    display: none;
+  }
 }
 
 /* Botones principales */
