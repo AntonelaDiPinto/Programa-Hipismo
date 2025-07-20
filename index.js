@@ -15,8 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Carrusel de Flyers
 const flyers = [
-  "../Imagenes/flyer.jpg",
-  "../Imagenes/flyer2.jpg",
+  "./Imagenes/flyer.jpg",
+  "./Imagenes/flyer2.jpg",
 ];
 
 let flyerActual = 0;
